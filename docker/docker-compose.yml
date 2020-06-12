@@ -1,0 +1,14 @@
+version: '3'
+volumes:
+  db-data-bookstore:
+    driver: local
+services:
+  postgres:
+    volumes:
+      - db-data-bookstore:/var/lib/postgresql/data
+    build: './db'
+    environment:
+      POSTGRES_USER: 'user'
+      POSTGRES_PASSWORD: '1234'
+    ports:
+      - 5432:5432

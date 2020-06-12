@@ -1,0 +1,29 @@
+package com.bookstore.repository;
+
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.bookstore.domain.Book;
+
+@Repository
+public interface BookRepository extends JpaRepository<Book, Long> {
+
+	@Query("select book from Book book")
+	List<Book> getBooks();
+
+	@Query("select book from Book book where lower(book.title) like :searchName or lower(book.author) like :searchName")
+	Page<Book> searchBook(@Param("searchName") String searchName, Pageable pageable);
+
+	@Query("select book from Book book where book.title= :title and book.author= :author")
+	List<Book> getBookByAuthorTitle(@Param("author") String author, @Param("title") String title);
+
+	@Query("select book from Book book")
+	Page<List<Book>> getBooks(Pageable pageable);
+
+}
