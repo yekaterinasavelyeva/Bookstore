@@ -5,9 +5,7 @@ build/**
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**
-communication/test/secrets.values.yaml
-communication/prod/secrets.values.yaml
-**/secrets.values.yaml
+!**/*.sql
 
 ### STS ###
 .apt_generated
@@ -34,3 +32,9 @@ out/
 
 ### VS Code ###
 .vscode/
+
+*.jar
+*.war
+*.bin
+*.lock
+*.sql

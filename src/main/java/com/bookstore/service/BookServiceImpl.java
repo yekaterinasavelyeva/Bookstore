@@ -35,7 +35,7 @@ public class BookServiceImpl implements BookService{
 	@Override
 	@Transactional
 	public void save(Book book) throws BookExistException {
-		if(!bookExist(book.getAuthor(), book.getTitle()))
+		if(!bookExist(book.getTitle()))
 			repository.save(book);
 		else throw new BookExistException("This book already exist!");
 	}
@@ -60,8 +60,8 @@ public class BookServiceImpl implements BookService{
 
 	@Override
 	@Transactional
-	public boolean bookExist(String author, String title) {
-		return !repository.getBookByAuthorTitle(author, title).isEmpty();
+	public boolean bookExist(String title) {
+		return !repository.getBookByTitle(title).isEmpty();
 	}
 
 

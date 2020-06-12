@@ -22,5 +22,5 @@ public interface BookService {
 
 	Page<Book> searchBook(String searchName, Pageable pageable);
 
-	boolean bookExist(String author, String title);
+	boolean bookExist(String author);
 }

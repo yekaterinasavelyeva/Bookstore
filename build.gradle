@@ -22,6 +22,7 @@ apply plugin: "io.freefair.lombok"
 apply plugin: "com.github.ManifestClasspath"
 apply plugin: 'application'
 apply plugin : "io.spring.dependency-management"
+apply plugin: 'application'
 mainClassName = 'com.bookstore.Application'
 
 group 'com.bookstore'
@@ -94,6 +95,7 @@ bootWar{
     mainClassName = 'com.bookstore.Application'
     archiveBaseName = 'bookstore'
     archiveVersion = '0.1.0'
+    classifier = 'boot'
 }
 
 bootRun {
