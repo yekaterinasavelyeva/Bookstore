@@ -13,6 +13,9 @@ import com.bookstore.domain.Book;
 import com.bookstore.exceptions.BookExistException;
 import com.bookstore.repository.BookRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service(value = "bookServiceSimple")
 public class BookServiceImpl implements BookService{
 

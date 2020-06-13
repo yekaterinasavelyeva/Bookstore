@@ -1,0 +1,8 @@
+version: "3"
+services:
+  springapp:
+    build: .
+    container_name: bookstore-docker
+    ports:
+      - 8000:8080
+    restart: always

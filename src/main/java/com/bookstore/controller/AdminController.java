@@ -18,6 +18,9 @@ import com.bookstore.domain.Book;
 import com.bookstore.exceptions.BookExistException;
 import com.bookstore.service.BookService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class AdminController {
 

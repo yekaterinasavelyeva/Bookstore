@@ -29,8 +29,15 @@ If it's needed to remove all data the Docker volumes must be cleaned by running 
        - for packaged war file in console (cmd) run: java -jar ./bookstore-0.1.0-boot.war
 3. In the browser open http://localhost/bookstore/ or http://localhost/bookstore/index.html 
 
-
-1. Api call example for POST: localhost/bookstore/api/books?date=2020-06-12T04:30:45.123Z     
+## API description
+1. Api call example for POST: localhost/bookstore/api/books?date=2020-06-12T04:30:45.123Z   
+                        GET: localhost/bookstore/api/books
+                             localhost/bookstore/api/mock  
            
-
 2. Swagger documentation: localhost/bookstore/swagger-ui.html
+
+## Build and run docker image
+
+$ .\gradlew bootWar
+$ docker build . -t bookstore:spring-boot-docker
+$ docker run --publish=8080:8080 bookstore:spring-boot-docker

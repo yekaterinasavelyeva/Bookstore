@@ -22,6 +22,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -39,6 +40,7 @@ import lombok.extern.slf4j.Slf4j;
 public class Book {
 
 	@Id
+	@ApiModelProperty(value = "id", hidden = true)
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -48,15 +50,18 @@ public class Book {
 	@Column(name = "title", unique = true)
 	private String title;
 
+	@ApiModelProperty(value = "pagesCount", hidden = true)
 	@NotEmpty(message = "is required")
 	@Size(min=2, max=30)
 	@Column(name = "author")
 	private String author;
 
+	@ApiModelProperty(value = "createdTime", hidden = true)
 	@NotEmpty(message = "is required")
 	@Column(name = "genre")
 	private String genre;
 
+	@ApiModelProperty(value = "pagesCount", hidden = true)
 	@NotNull(message = "is required")
 	@Min(value=2, message = "must be greater than or equal to 2")
 	@Column(name = "pages_count")
@@ -68,10 +73,12 @@ public class Book {
 	@Digits(integer=6, fraction=2)
 	private BigDecimal price;
 
+	@ApiModelProperty(value = "createdTime", hidden = true)
 	@CreationTimestamp
 	@Column(name = "created_time", insertable=false, updatable=false)
 	private ZonedDateTime createdTime;
 
+	@ApiModelProperty(value = "updatedTime", hidden = true)
 	@UpdateTimestamp
 	@Column(name = "updated_time")
 	private ZonedDateTime updatedTime;
