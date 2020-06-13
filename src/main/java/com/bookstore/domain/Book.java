@@ -19,18 +19,18 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
+@JsonIgnoreProperties({"author", "genre","createdTime","updatedTime","pagesCount","id"})
 @Slf4j
 @Table(name = "book")
-@ToString
-@EqualsAndHashCode
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -58,10 +58,11 @@ public class Book {
 	private String genre;
 
 	@NotNull(message = "is required")
-	@Min(value=2, message = "must be greater that or equal to 2")
+	@Min(value=2, message = "must be greater than or equal to 2")
 	@Column(name = "pages_count")
 	private Integer pagesCount;
 
+	@JsonFormat(shape=JsonFormat.Shape.STRING)
 	@NotNull(message = "is required")
 	@DecimalMin(value = "0.00", message = "Price format is 0.00")
 	@Digits(integer=6, fraction=2)

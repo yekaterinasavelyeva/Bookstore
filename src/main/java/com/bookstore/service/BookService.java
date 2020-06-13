@@ -1,5 +1,6 @@
 package com.bookstore.service;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -11,6 +12,8 @@ import com.bookstore.exceptions.BookExistException;
 public interface BookService {
 
 	List<Book> getBooks();
+
+	List<Book> getBooksByFromDate(ZonedDateTime dateFrom);
 
 	Page<Book> getBooks(Pageable pageable);
 

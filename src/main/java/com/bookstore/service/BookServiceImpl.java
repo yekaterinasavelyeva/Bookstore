@@ -1,5 +1,6 @@
 package com.bookstore.service;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,11 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public List<Book> getBooks() {
 		return repository.getBooks();
+	}
+
+	@Override
+	public List<Book> getBooksByFromDate(ZonedDateTime dateFrom) {
+		return repository.getBooksByFromDate(dateFrom);
 	}
 
 	@Override

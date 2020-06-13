@@ -37,4 +37,4 @@ out/
 *.war
 *.bin
 *.lock
-*.sql
+*.bin
