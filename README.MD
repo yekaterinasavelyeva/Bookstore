@@ -30,7 +30,8 @@ If it's needed to remove all data the Docker volumes must be cleaned by running 
 3. In the browser open http://localhost/bookstore/ or http://localhost/bookstore/index.html 
 
 ## API description
-1. Api call example for POST: localhost/bookstore/api/books?date=2020-06-12T04:30:45.123Z   
+1. Api call example for POST: localhost/bookstore/api/books?date=2020-06-12T04:30:45.123Z 
+                              or localhost/bookstore/api/books and parameter of "date" and "2020-06-12T04:30:45.123Z"
                         GET: localhost/bookstore/api/books
                              localhost/bookstore/api/mock  
            
