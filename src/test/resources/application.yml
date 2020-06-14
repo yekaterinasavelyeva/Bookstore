@@ -14,7 +14,7 @@ logging:
       springframework:
         security: INFO
 
-    qred:
+    bookstore:
       configuration:
         CustomRequestLoggingFilter: INFO
 

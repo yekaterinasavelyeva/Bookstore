@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bookstore.domain.Book;
 import com.bookstore.exceptions.BookExistException;
+import com.bookstore.exceptions.InvalidPropertyException;
+import com.bookstore.exceptions.NotFoundException;
 import com.bookstore.repository.BookRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +35,13 @@ public class BookServiceImpl implements BookService{
 
 	@Override
 	public List<Book> getBooksByFromDate(ZonedDateTime dateFrom) {
-		return repository.getBooksByFromDate(dateFrom);
+		requireNonNull(dateFrom, "Failed to retrieve books. Date property is null");
+		List<Book> books =  repository.getBooksByFromDate(dateFrom);
+		if(books.isEmpty()){
+			log.error("Failed to fetch books items from DB by from date : {}" , dateFrom);
+			throw new NotFoundException(String.format("Book items not found by from date : %s" , dateFrom));
+		}
+		return books;
 	}
 
 	@Override
@@ -71,6 +79,13 @@ public class BookServiceImpl implements BookService{
 	@Transactional
 	public boolean bookExist(String title) {
 		return !repository.getBookByTitle(title).isEmpty();
+	}
+
+	private static void requireNonNull(Object obj, String message) {
+		if (obj == null) {
+			log.error("Property required : {}", message);
+			throw new InvalidPropertyException(message);
+		}
 	}
 
 

@@ -27,7 +27,4 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 	@Query("select book from Book book where book.title= :title")
 	List<Book> getBookByTitle(@Param("title") String title);
 
-	@Query("select book from Book book")
-	Page<List<Book>> getBooks(Pageable pageable);
-
 }
