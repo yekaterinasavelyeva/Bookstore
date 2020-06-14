@@ -65,8 +65,9 @@ dependencies {
     implementation 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
     implementation 'javax.servlet:javax.servlet-api:4.0.1'
     implementation 'org.springframework.security:spring-security-taglibs:5.3.3.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-devtools'
 
-    testRuntimeOnly 'com.h2database:h2:1.4.193'
+    runtimeOnly 'com.h2database:h2:1.4.193'
     compile group: 'org.yaml', name: 'snakeyaml', version: '1.25'
     compileOnly "org.springframework.boot:spring-boot-configuration-processor"
 
@@ -93,9 +94,8 @@ test {
 bootWar{
 
     mainClassName = 'com.bookstore.Application'
-    archiveBaseName = 'bookstore'
-    archiveVersion = '1.0'
-    classifier = 'boot'
+    archiveBaseName = 'bookstore-mock'
+    archiveVersion = '2.0'
 }
 
 bootRun {

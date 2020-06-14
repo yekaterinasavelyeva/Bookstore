@@ -3,26 +3,25 @@ spring:
     name: bookstore
   profiles:
     active: dev
-  batch:
-    job:
-      enabled: false
-    initialize-schema: always
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+    platform: h2
 
   jpa:
-    database: POSTGRESQL
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    generate-ddl: false
-    open-in-view: false
-    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: none
-      use-new-id-generator-mappings: true
-  datasource:
-    platform: postgres
-    url: jdbc:postgresql://localhost:5432/bookstore_local_db
-    username: user
-    password: 1234
-    driverClassName: org.postgresql.Driver
+    properties:
+      hibernate:
+        show-sql: true
+        format_sql: true
   mvc:
     view:
       prefix: /WEB-INF/view/

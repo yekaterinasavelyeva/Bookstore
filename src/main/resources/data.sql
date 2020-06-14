@@ -1,0 +1,2 @@
+INSERT INTO book(id, title, author, genre, pages_count, price) VALUES (1, 'Alice in Wonderland', 'Lewis Caroll', 'Fairytales', 356, 35.00);
+INSERT INTO book(id, title, author, genre, pages_count, price) VALUES (2, 'Clean code', 'Robert Martin', 'Studies', 470, 0.00);

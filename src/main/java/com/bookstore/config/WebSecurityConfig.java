@@ -47,9 +47,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.failureUrl("/login?error")
 			.usernameParameter("username").passwordParameter("password")
 			.and()
-			.logout().logoutSuccessUrl("/login?logout")
-			.invalidateHttpSession(true)
-																																														 .deleteCookies("JSESSIONID");
+			.logout().logoutSuccessUrl("/login?logout").invalidateHttpSession(true).deleteCookies("JSESSIONID");
+
+		http.headers().frameOptions().disable();
+
 	}
 
 	@Override

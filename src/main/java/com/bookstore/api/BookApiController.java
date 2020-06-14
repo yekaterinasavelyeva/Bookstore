@@ -8,9 +8,6 @@ import java.time.ZonedDateTime;
 import java.util.Collections;
 import java.util.List;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -54,9 +51,7 @@ public class BookApiController {
 	})
 	ResponseEntity<List<Book>> fetchBooks(@RequestParam("date")
 										  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime dateCreatedFrom) {
-		log.info("Received book retrieving request.");
-		List<Book> books = service.getBooksByFromDate(dateCreatedFrom);
-		return ResponseEntity.status(HttpStatus.OK).body(books);
+		return mockCall();
 	}
 
 	@GetMapping("/books")
@@ -66,10 +61,7 @@ public class BookApiController {
 			@ApiResponse(code = 400, message = "Bad request or validation error", response = ApiError.class)
 	})
 	ResponseEntity<List<Book>> fetchBooksOvernight() {
-		log.info("Received book retrieving request.");
-		ZonedDateTime time = ZonedDateTime.now().minusHours(OVERNIGHT_HOURS);
-		List<Book> books = service.getBooksByFromDate(time);
-		return ResponseEntity.status(HttpStatus.OK).body(books);
+		return mockCall();
 	}
 
 	@GetMapping("/mock")
@@ -79,11 +71,13 @@ public class BookApiController {
 			@ApiResponse(code = 400, message = "Bad request or validation error", response = ApiError.class)
 	})
 	ResponseEntity<List<Book>> mock() {
+		return mockCall();
+	}
+
+	private ResponseEntity<List<Book>> mockCall() {
 		log.info("Received book retrieving request.");
 		List<Book> books = Collections.singletonList(MOCK_BOOK);
 		return ResponseEntity.status(HttpStatus.OK).body(books);
 	}
-
-
 
 }
