@@ -40,5 +40,8 @@ If it's needed to remove all data the Docker volumes must be cleaned by running 
 ## Build and run docker image
 
 $ .\gradlew bootWar
-$ docker build . -t bookstore:spring-boot-docker
-$ docker run --publish=8080:8080 bookstore:spring-boot-docker
+$ .\gradlew bootWar $ docker build --build-arg WAR_FILE=build/libs/*.war -t bookstore/spring-boot-mock . 
+$ docker run -p 80:80 bookstore/spring-boot-mock $ docker ps -a
+$ docker save bookstore/spring-boot-mock > bookstore-mock-image.tar
+
+http://localhost/bookstore/api/books
