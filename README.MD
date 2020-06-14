@@ -2,7 +2,7 @@
 
 1. Need to install Docker
 2. In terminal go to /docker folder 
-3. Start docker instance with initialized communication_local_db by running `docker-compose up --build`
+3. Start docker instance with initialized bookstore_local_db by running `docker-compose up --build`
 4. DB with user `user` and password `1234` is up!
     * if some DB information should be changed do it in `docker/db/init-db.sql` or 
     `docker/docker-compose.yml`
