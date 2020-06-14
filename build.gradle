@@ -94,7 +94,7 @@ bootWar{
 
     mainClassName = 'com.bookstore.Application'
     archiveBaseName = 'bookstore'
-    archiveVersion = '1.0'
+    archiveVersion = '2.0'
     classifier = 'boot'
 }
 
